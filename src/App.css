@@ -34,7 +34,7 @@ input:focus {
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 100vh;
+  min-height: 40vh;
 }
 
 .logo {
@@ -74,4 +74,55 @@ input:focus {
   align-items: center;
   justify-content: center;
   gap: 10px;
+}
+
+/* pizza menu */
+.pizza {
+  display: flex;
+  gap: 16px;
+  padding: 8px 0;
+}
+
+.pizza__image {
+  width: 100px;
+  height: 100px;
+}
+
+.pizza__info {
+  display: flex;
+  flex-direction: column;
+}
+
+.pizza__name {
+  font-weight: 500;
+}
+
+.pizza__ingredients {
+  font-style: italic;
+  margin-bottom: 10px;
+}
+
+.pizza__actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-weight: bold;
+}
+
+.pizza__price {
+  font-size: 14px;
+}
+.pizza_soldOut {
+  color: red;
+}
+
+ul {
+  list-style-position: inside;
+  -moz-column-count: 2; /* Firefox */
+  -webkit-column-count: 2; /* Safari and Chrome */
+  column-count: 2;
+}
+.pizza_menu button {
+  margin: 0 auto;
+  display: block;
 }
