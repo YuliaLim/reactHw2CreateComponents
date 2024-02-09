@@ -3,12 +3,8 @@ import "./App.css";
 import Header from "./components/Header";
 import LoginForm from "./components/LoginForm";
 import Menu from "./components/Menu";
-import Button from "./components/Button";
 
 function App() {
-  const [isVisibleMenu, setIsVisibleMenu] = useState(false);
-  const handleShowMenu = () => setIsVisibleMenu(!isVisibleMenu);
-
   const pizzas = [
     {
       id: 1,
@@ -216,16 +212,9 @@ function App() {
     <div>
       <div className="wrapper">
         <Header></Header>
-        <LoginForm></LoginForm> 
+        <LoginForm></LoginForm>
       </div>
-      <div className="pizza_menu"  >
-        <Button text="Menu" handleClick={handleShowMenu}></Button>
-        {isVisibleMenu && (
-          <div > 
-            <Menu menu={pizzas}></Menu>
-          </div>
-        )}
-      </div>
+      <Menu menu={pizzas}></Menu>
     </div>
   );
 }
