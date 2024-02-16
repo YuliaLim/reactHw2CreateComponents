@@ -1,7 +1,13 @@
+import { useState } from "react";
 import Button from "./Button";
+import PizzaCounter from "./PizzaCounter";
 
 const MenuItem = (props) => {
   const { menuItem } = props;
+
+  const [isVisibleCounter, setIsVisibleCounter] = useState(false);
+  const handleShowCounter = () => setIsVisibleCounter(!isVisibleCounter);
+
   return (
     <div className="pizza">
       <img src={menuItem.imageUrl} className="pizza__image"></img>
@@ -16,7 +22,14 @@ const MenuItem = (props) => {
         ) : (
           <div className="pizza__actions">
             <p className="pizza__price">€{menuItem.unitPrice}</p>
-            <Button text="Add to card"></Button>
+            {isVisibleCounter ? (
+              <PizzaCounter setIsVisibleCounter={setIsVisibleCounter}></PizzaCounter>
+            ) : (
+              <Button
+                text="Add to card"
+                handleClick={handleShowCounter}
+              ></Button>
+            )}
           </div>
         )}
       </div>

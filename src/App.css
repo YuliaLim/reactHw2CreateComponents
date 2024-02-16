@@ -91,6 +91,7 @@ input:focus {
 .pizza__info {
   display: flex;
   flex-direction: column;
+  width: 100%;
 }
 
 .pizza__name {
@@ -122,7 +123,15 @@ ul {
   -webkit-column-count: 2; /* Safari and Chrome */
   column-count: 2;
 }
-.pizza_menu button {
+.pizza_menu button:first-child {
   margin: 0 auto;
   display: block;
+}
+.pizzaCounter{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.pizzaCounter button{
+  margin-right: 5px;
 }
