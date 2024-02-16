@@ -11,12 +11,12 @@ const MenuItem = (props) => {
         <p className="pizza__ingredients">{menuItem.ingredients.join(", ")}</p>
         {menuItem.soldOut ? (
           <div className="pizza__actions">
-            <p className="pizza__price">€{menuItem.unitPrice}</p>
-            <Button text="Add to card"></Button>
+            <p className="pizza__price pizza_soldOut">Sold out</p>
           </div>
         ) : (
           <div className="pizza__actions">
-            <p className="pizza__price pizza_soldOut">Sold out</p>
+            <p className="pizza__price">€{menuItem.unitPrice}</p>
+            <Button text="Add to card"></Button>
           </div>
         )}
       </div>
