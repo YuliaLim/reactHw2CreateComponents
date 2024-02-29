@@ -34,7 +34,7 @@ input:focus {
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 40vh;
+  min-height: 10vh;
 }
 
 .logo {
@@ -127,11 +127,68 @@ ul {
   margin: 0 auto;
   display: block;
 }
-.pizzaCounter{
+.pizzaCounter {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
-.pizzaCounter button{
+.pizzaCounter button {
   margin-right: 5px;
+}
+.pizza_list {
+  margin: 20px 40px;
+}
+.pizza_list li {
+  padding: 10px;
+  border: 1px solid lightgray;
+  margin-bottom: 5px;
+  border-radius: 5px;
+}
+.pizza_list select {
+  margin-bottom: 10px;
+}
+.page_not_found {
+  height: 50vh;
+  background: black;
+  color: red;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.loginForm {
+  display: flex;
+  flex-direction: column;
+  padding: 50px 200px;
+}
+.loginForm > * {
+  margin-bottom: 20px;
+}
+
+.navPanel {
+  display: flex;
+  justify-content: center;
+}
+.navPanel > * {
+  text-decoration: none;
+  margin-right: 25px;
+  border: 1px solid lightgray;
+  border-radius: 5px;
+  padding: 10px 20px;
+  color: black;
+}
+.navPanel > *:hover {
+  background: rgb(250, 250, 127);
+}
+.active {
+  outline: 1px solid rgb(102, 78, 4);
+}
+/*popUp*/
+.popUp {
+  padding: 10px;
+  border: 1px solid lightgray;
+  border-radius: 5px;
+  color: red;
+  z-index: 100;
+  background: lightyellow;
+  position: absolute;
 }

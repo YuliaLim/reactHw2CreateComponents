@@ -1,7 +1,11 @@
 const Button = (props) => {
-  const { text, handleClick } = props;
+  const { text, handleClick, type, disabledButtton } = props;
 
-  return <button onClick={handleClick}>{text}</button>;
+  return (
+    <button onClick={handleClick} type={type} disabled={disabledButtton}>
+      {text}
+    </button>
+  );
 };
 
 export default Button;
