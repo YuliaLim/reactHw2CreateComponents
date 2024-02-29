@@ -1,7 +1,7 @@
 import { useState } from "react";
 import PopUp from "./PopUp";
 const InputPop = (props) => {
-  const { pattern, textPopUp, setConfirmField } = props;
+  const { pattern, textPopUp, placeholder } = props;
   const [isShowPop, setIsShowPop] = useState(false);
   const [inputCoordinate, setInputCoordinate] = useState({});
   //const [confirm, setConfirm] = useState(false);
@@ -24,7 +24,7 @@ const InputPop = (props) => {
   return (
     <>
       <input
-        placeholder="Enter your login"
+        placeholder={placeholder}
         onChange={(e) => {
           handleChangeValue(e);
         }}
