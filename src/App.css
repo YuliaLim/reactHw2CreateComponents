@@ -192,3 +192,26 @@ ul {
   background: lightyellow;
   position: absolute;
 }
+
+.errorMessage {
+  border: 1px solid red;
+  color: red;
+  font-size: 12px;
+  font-weight: bold;
+  width: max-content;
+  margin-top: -20px;
+}
+.wpapperFormInfoUser{display: flex;
+  justify-content: center;
+
+}
+.userInfoFrom{
+  padding-top: 40px;
+  display: flex;
+  flex-direction: column;
+  width: 40%;
+  justify-content: center;
+}
+.userInfoFrom input{
+  margin-bottom: 15px;
+}
