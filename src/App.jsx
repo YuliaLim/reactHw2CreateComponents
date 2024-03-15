@@ -1,27 +1,42 @@
 import "./App.css";
-import Header from "./components/Header";
-import CounterReduce from "./components/CounterReduce";
-import LoginForm from "./pages/LoginForm";
-import Menu from "./pages/Menu";
+import { Suspense, lazy } from "react";
+import { Audio } from "react-loader-spinner";
 import { Route, Routes } from "react-router-dom";
-import Navigation from "./components/Navigation";
-import PageNotFound from "./pages/PageNotFound";
-import UserInfoForm from "./pages/UserInfoForm";
+
+const LazyPageNotFound = lazy(() => import("./pages/PageNotFound"));
+const LazyUserInfoForm = lazy(() => import("./pages/UserInfoForm"));
+const LazyHeader = lazy(() => import("./components/Header"));
+const LazyLoginForm = lazy(() => import("./pages/LoginForm"));
+const LazyMenu = lazy(() => import("./pages/Menu"));
 
 function App() {
   return (
     <div>
-      <div className="wrapper">
-        <Header></Header>
-      </div>
-      <Routes>
-        <Route path="" element={<Menu />}></Route>
-        <Route path="/login" element={<LoginForm />}></Route>
-        <Route path="/menu" element={<Menu />}></Route>
-        <Route path="/register" element={<UserInfoForm />}></Route>
-        <Route path="*" element={<PageNotFound />}></Route>
-      </Routes>
-      {/* <CounterReduce></CounterReduce> */}
+      <Suspense
+        fallback={
+          <Audio
+            height="80"
+            width="80"
+            radius="9"
+            color="yellow"
+            ariaLabel="three-dots-loading"
+            wrapperStyle
+            wrapperClass
+          />
+        }
+      >
+        <div className="wrapper">
+          <LazyHeader />
+        </div>
+
+        <Routes>
+          <Route path="" element={<LazyMenu />}></Route>
+          <Route path="/login" element={<LazyLoginForm />}></Route>
+          <Route path="/menu" element={<LazyMenu />}></Route>
+          <Route path="/register" element={<LazyUserInfoForm />}></Route>
+          <Route path="*" element={<LazyPageNotFound />}></Route>
+        </Routes>
+      </Suspense>
     </div>
   );
 }
