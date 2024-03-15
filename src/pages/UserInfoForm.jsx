@@ -2,13 +2,13 @@ import { useForm } from "react-hook-form";
 import Button from "../components/Button";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { userInfoSchema } from "../schemes/userInfoSchema";
-import ErrorMesage from "../components/ErrorMessage";
+import Input from "../components/Input";
 
 const UserInfoForm = () => {
   const {
-    register,
+    control,
     handleSubmit,
-    formState: { errors, isValid },
+    formState: { isValid },
   } = useForm({
     mode: "onBlur",
     defaultValues: {
@@ -25,22 +25,12 @@ const UserInfoForm = () => {
   return (
     <div className="wpapperFormInfoUser">
       <form onSubmit={handleSubmit(onSubmit)} className="userInfoFrom">
-        <input {...register("userName")} type="text" placeholder="enter name" />
-        {errors.userName && (
-          <ErrorMesage message={errors.userName.message}></ErrorMesage>
-        )}
-        <input {...register("tel")} type="text" placeholder="enter telephone" />
-        {errors.tel && <ErrorMesage message={errors.tel.message}></ErrorMesage>}
-        <input
-          {...register("address")}
-          type="text"
-          placeholder="enter address"
-        />
-        {errors.address && (
-          <ErrorMesage message={errors.address.message}></ErrorMesage>
-        )}
+        <Input placeholder="Enter name" control={control} name="userName" />
+        <Input placeholder="Enter telephone" control={control} name="tel" />
+        <Input placeholder="Enter address" control={control} name="address" />
+
         <div>
-          <input {...register("priority")} type="checkbox"></input>
+          <Input type="checkbox" control={control} name="priority" />
           <span>Want to yo give your order priority?</span>
         </div>
         <Button

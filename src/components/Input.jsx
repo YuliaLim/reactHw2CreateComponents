@@ -1,19 +1,22 @@
 import { useState } from "react";
+import { useController } from "react-hook-form";
+import ErrorMessage from "./ErrorMessage";
 
 const Input = (props) => {
-  const { placeholder } = props;
-  const [value, setValue] = useState("");
+  const { type = "text", placeholder, name, control } = props;
+  const {
+    field,
+    fieldState:{error}
+  } = useController({ name, control });
 
-  const handleChangeValue = (e) => {
-    setValue(e.target.value);
-  };
   return (
-    <input
-      placeholder={placeholder}
-      onChange={(e) => {
-        handleChangeValue(e);
-      }}
-    ></input>
+    <>
+      <input type={type}
+       placeholder={placeholder}
+      {...field}
+       />
+      {error && <ErrorMessage message={error.message}></ErrorMessage>}
+    </>
   );
 };
 

@@ -1,41 +1,39 @@
 import Button from "../components/Button";
 import { useNavigate } from "react-router-dom";
-import InputPop from "../components/InputPop";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { loginFormSchema } from "../schemes/loginFormSchema";
+import Input from "../components/Input";
 
 const LoginForm = () => {
   const navigate = useNavigate();
-  const handleSubmitForm = (e) => {
-    e.preventDefault();
+  const handleSubmitForm = (data) => {
     navigate("/menu");
+    console.log(data);
   };
-  // const [confirmLogin, setConfirmLogin] = useState(false);
-  // const [confirmPassword, setConfirmPassword] = useState(false);
-  // const [disabledButtton, setDisabledButton] = useState(true);
-  // if (confirmLogin && confirmPassword) {
-  //   setDisabledButton(false);
-  // }
+
+  const {
+    control,
+    handleSubmit,
+    formState: { isValid },
+  } = useForm({
+    mode: "onBlur",
+    defaultValues: {
+      login: "",
+      password: "",
+    },
+    resolver: zodResolver(loginFormSchema),
+  });
+
   return (
-    <form onSubmit={handleSubmitForm} className="loginForm">
-      <InputPop
-        placeholder="Enter your login"
-        pattern="[a-z, A-Z]{6,}"
-        textPopUp="Login must consist min 6 letters"
-        // setConfirmField={setConfirmLogin}
-      ></InputPop>
-      <InputPop
+    <form onSubmit={handleSubmit(handleSubmitForm)} className="loginForm">
+      <Input placeholder="Enter your login" control={control} name="login" />
+      <Input
         placeholder="Enter your password"
-        pattern="[0-9]{6,}"
-        textPopUp="Password must consist min 6 numbers"
-        // setConfirmField={setConfirmPassword}
-      ></InputPop>
-      {/* {confirmLogin && confirmPassword
-        ? setDisabledButton(false)
-        : setDisabledButton(true)} */}
-      <Button
-        text="Log in"
-        type="submit"
-        // disabledButtton={disabledButtton}
-      ></Button>
+        control={control}
+        name="password"
+      />
+      <Button text="Log in" type="submit" disabledButtton={!isValid}></Button>
     </form>
   );
 };

@@ -4,9 +4,6 @@ import Button from "../components/Button";
 import Sort from "../components/Sort";
 
 const Menu = () => {
-  //const [isVisibleMenu, setIsVisibleMenu] = useState(true);
-  //const handleShowMenu = () => setIsVisibleMenu(!isVisibleMenu);
-
   const [menu, setMenu] = useState([]);
   const [error, setError] = useState("");
 
