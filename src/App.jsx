@@ -1,13 +1,15 @@
 import "./App.css";
-import { Suspense, lazy } from "react";
+import { Suspense, createContext, lazy } from "react";
 import { Audio } from "react-loader-spinner";
 import { Route, Routes } from "react-router-dom";
+import PizzaItemProvider from "./context/PizzaItemProvider";
 
 const LazyPageNotFound = lazy(() => import("./pages/PageNotFound"));
 const LazyUserInfoForm = lazy(() => import("./pages/UserInfoForm"));
 const LazyHeader = lazy(() => import("./components/Header"));
 const LazyLoginForm = lazy(() => import("./pages/LoginForm"));
 const LazyMenu = lazy(() => import("./pages/Menu"));
+const LazyBasket = lazy(() => import("./pages/Basket"));
 
 function App() {
   return (
@@ -25,17 +27,20 @@ function App() {
           />
         }
       >
-        <div className="wrapper">
-          <LazyHeader />
-        </div>
+        <PizzaItemProvider>
+          <div className="wrapper">
+            <LazyHeader />
+          </div>
 
-        <Routes>
-          <Route path="" element={<LazyMenu />}></Route>
-          <Route path="/login" element={<LazyLoginForm />}></Route>
-          <Route path="/menu" element={<LazyMenu />}></Route>
-          <Route path="/register" element={<LazyUserInfoForm />}></Route>
-          <Route path="*" element={<LazyPageNotFound />}></Route>
-        </Routes>
+          <Routes>
+            <Route path="" element={<LazyMenu />}></Route>
+            <Route path="/login" element={<LazyLoginForm />}></Route>
+            <Route path="/menu" element={<LazyMenu />}></Route>
+            <Route path="/register" element={<LazyUserInfoForm />}></Route>
+            <Route path="/basket" element={<LazyBasket />}></Route>
+            <Route path="*" element={<LazyPageNotFound />}></Route>
+          </Routes>
+        </PizzaItemProvider>
       </Suspense>
     </div>
   );

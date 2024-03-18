@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import MenuItem from "../components/menuItem";
-import Button from "../components/Button";
 import Sort from "../components/Sort";
 
 const Menu = () => {

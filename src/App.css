@@ -201,17 +201,64 @@ ul {
   width: max-content;
   margin-top: -20px;
 }
-.wpapperFormInfoUser{display: flex;
+.wpapperFormInfoUser {
+  display: flex;
   justify-content: center;
-
 }
-.userInfoFrom{
+.userInfoFrom {
   padding-top: 40px;
   display: flex;
   flex-direction: column;
   width: 40%;
   justify-content: center;
 }
-.userInfoFrom input{
+.userInfoFrom input {
   margin-bottom: 15px;
+}
+.cartForBasket {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  padding: 20px 40px;
+  border: 1px solid  rgb(234, 179, 8);
+  border-radius: 5px;
+}
+.cartForBasket > * {
+  margin-right: 10px;
+}
+.basketPizzaName {
+  width: 40%;
+}
+.basket ul {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+ margin-bottom: 20px;
+}
+
+
+.basket {
+  text-align: center;
+}
+.basket button {
+  margin-right: 10px;
+}
+.emptyBasket{
+  padding: 80px;
+  font-size: 25px;
+  border: 1px solid  rgb(234, 179, 8);
+  border-radius: 5px;
+  margin: 40px 10px;
+}
+.emptyBasket button{
+  margin-top: 40px;
+}
+.tittleBasket{
+  font-size: 30px;
+  padding-top: 20px;
+}
+a{
+  display: flex;
+  align-items: center;
 }

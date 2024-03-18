@@ -1,12 +1,17 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import Button from "./Button";
 import PizzaCounter from "./PizzaCounter";
+import { PizzaItemContext } from "../context/PizzaItemProvider";
 
 const MenuItem = (props) => {
   const { menuItem } = props;
 
-  const [isVisibleCounter, setIsVisibleCounter] = useState(false);
-  const handleShowCounter = () => setIsVisibleCounter(!isVisibleCounter);
+  const { state } = useContext(PizzaItemContext);
+  let pizzaQty = state.items.filter((item) => item.id === menuItem.id);
+  const [isVisibleCounter, setIsVisibleCounter] = useState(
+    pizzaQty.length ? true : false
+  );
+  const handleShowCounter = () => setIsVisibleCounter(true);
 
   return (
     <div className="pizza">
@@ -23,7 +28,12 @@ const MenuItem = (props) => {
           <div className="pizza__actions">
             <p className="pizza__price">€{menuItem.unitPrice}</p>
             {isVisibleCounter ? (
-              <PizzaCounter setIsVisibleCounter={setIsVisibleCounter}></PizzaCounter>
+              <PizzaCounter
+                setIsVisibleCounter={setIsVisibleCounter}
+                item={menuItem}
+                initCounter={pizzaQty.length ? pizzaQty[0].qty : +0}
+              ></PizzaCounter>
+              
             ) : (
               <Button
                 text="Add to card"
