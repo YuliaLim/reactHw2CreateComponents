@@ -2,7 +2,7 @@ import "./App.css";
 import { Suspense, createContext, lazy } from "react";
 import { Audio } from "react-loader-spinner";
 import { Route, Routes } from "react-router-dom";
-import PizzaItemProvider from "./context/PizzaItemProvider";
+// import PizzaItemProvider from "./context/PizzaItemProvider"; //for useReducer
 
 const LazyPageNotFound = lazy(() => import("./pages/PageNotFound"));
 const LazyUserInfoForm = lazy(() => import("./pages/UserInfoForm"));
@@ -10,6 +10,7 @@ const LazyHeader = lazy(() => import("./components/Header"));
 const LazyLoginForm = lazy(() => import("./pages/LoginForm"));
 const LazyMenu = lazy(() => import("./pages/Menu"));
 const LazyBasket = lazy(() => import("./pages/Basket"));
+const LazyOrder = lazy(() => import("./pages/Order"));
 
 function App() {
   return (
@@ -27,20 +28,21 @@ function App() {
           />
         }
       >
-        <PizzaItemProvider>
-          <div className="wrapper">
-            <LazyHeader />
-          </div>
+        {/* <PizzaItemProvider>  //for useReducer  */}
+        <div className="wrapper">
+          <LazyHeader />
+        </div>
 
-          <Routes>
-            <Route path="" element={<LazyMenu />}></Route>
-            <Route path="/login" element={<LazyLoginForm />}></Route>
-            <Route path="/menu" element={<LazyMenu />}></Route>
-            <Route path="/register" element={<LazyUserInfoForm />}></Route>
-            <Route path="/basket" element={<LazyBasket />}></Route>
-            <Route path="*" element={<LazyPageNotFound />}></Route>
-          </Routes>
-        </PizzaItemProvider>
+        <Routes>
+          <Route path="" element={<LazyMenu />}></Route>
+          <Route path="/login" element={<LazyLoginForm />}></Route>
+          <Route path="/menu" element={<LazyMenu />}></Route>
+          <Route path="/register" element={<LazyUserInfoForm />}></Route>
+          <Route path="/basket" element={<LazyBasket />}></Route>
+          <Route path="*" element={<LazyPageNotFound />}></Route>
+          <Route path="/order/:orderID" element={<LazyOrder/>}></Route>
+        </Routes>
+        {/* </PizzaItemProvider> */}
       </Suspense>
     </div>
   );

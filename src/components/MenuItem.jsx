@@ -1,12 +1,14 @@
 import { useContext, useState } from "react";
 import Button from "./Button";
 import PizzaCounter from "./PizzaCounter";
-import { PizzaItemContext } from "../context/PizzaItemProvider";
+import { useSelector } from "react-redux";
+//import { PizzaItemContext } from "../context/PizzaItemProvider"; //for useReducer
 
 const MenuItem = (props) => {
   const { menuItem } = props;
+  const state= useSelector(state=>state.actionWithPizza);
 
-  const { state } = useContext(PizzaItemContext);
+ // const { state } = useContext(PizzaItemContext); //for useReducer
   let pizzaQty = state.items.filter((item) => item.id === menuItem.id);
   const [isVisibleCounter, setIsVisibleCounter] = useState(
     pizzaQty.length ? true : false
@@ -31,7 +33,7 @@ const MenuItem = (props) => {
               <PizzaCounter
                 setIsVisibleCounter={setIsVisibleCounter}
                 item={menuItem}
-                initCounter={pizzaQty.length ? pizzaQty[0].qty : +0}
+                initCounter={pizzaQty.length ? pizzaQty[0].qty : 0}
               ></PizzaCounter>
               
             ) : (

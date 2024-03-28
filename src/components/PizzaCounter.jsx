@@ -1,32 +1,30 @@
-import { useContext, useState } from "react";
+import { useState } from "react";
 import Button from "./Button";
-import { PizzaItemContext } from "../context/PizzaItemProvider";
+import { useDispatch } from "react-redux";
+import {
+  addPizza,
+  decrementPizza,
+  deletePizza,
+} from "../redux/slice/actionWithCountPizzaSlice";
 const PizzaCounter = (props) => {
   const { setIsVisibleCounter, item, initCounter } = props;
   const [counter, setCounter] = useState(initCounter);
   const [itemMenu, setItemMenu] = useState(item);
-  const { dispatch } = useContext(PizzaItemContext);
+
+  const dispatch = useDispatch();
 
   const handleIncrement = () => {
     setCounter(counter + 1);
-    dispatch({
-      type: "ADD_PIZZA",
-      payload: item,
-    });
+    dispatch(addPizza(itemMenu));
   };
   const handleDeincrement = () => {
     counter > 0 && setCounter(counter - 1);
-    dispatch({
-      type: "DECREMENT_PIZZA",
-      payload: itemMenu.id,
-    });
+
+    dispatch(decrementPizza(itemMenu.id));
   };
   const handleDeleteCounter = () => {
-    setIsVisibleCounter(false);
-    dispatch({
-      type: "DELETE_PIZZA",
-      payload: itemMenu.id,
-    });
+    setIsVisibleCounter && setIsVisibleCounter(false);
+    dispatch(deletePizza(itemMenu.id));
   };
 
   return (

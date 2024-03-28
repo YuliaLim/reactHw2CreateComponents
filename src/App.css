@@ -262,3 +262,54 @@ a{
   display: flex;
   align-items: center;
 }
+
+
+/* order */
+.orderBox{
+  padding: 5% 20%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.commonInfo{
+  font-weight: bold;
+}
+.commonInfo, .orderItem{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.priority{
+  background-color: red;
+  color:white;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+.order{
+  padding: 10px;
+  border:1px solid lightgray;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.orderItem{
+  padding: 15px;
+ 
+}
+.orderFooter, .timeDelivery{
+  background: rgb(246, 246, 246);
+  border-radius: 5px;
+  margin-top: 20px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+.orderFooter div{
+  margin-bottom: 5px;
+}
+.timeDelivery{
+  display: flex;
+  justify-content: end;
+  font-size: 14px;
+  font-style: italic;
+}
